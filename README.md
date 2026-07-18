@@ -13,6 +13,8 @@ to that tunnel, and the gNB maps the traffic to MTCH for radio transmission.
 
 <img src="images/mbs-testbed-in-a-lab.png" alt="mbs-testbed-in-a-lab" width="700">
 
+<img src="images/mbs-text-broadcast-demo.mp4" alt="5G MBS video streaming demo" width="700">
+
 ## Project Structure
 
 The full working tree is organized around the folder names used in
