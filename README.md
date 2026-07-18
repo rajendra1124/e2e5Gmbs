@@ -13,7 +13,11 @@ to that tunnel, and the gNB maps the traffic to MTCH for radio transmission.
 
 <img src="images/mbs-testbed-in-a-lab.png" alt="mbs-testbed-in-a-lab" width="700">
 
+*Figure 1. End-to-end SDR testbed used for 5G MBS broadcast experiments. The setup connects the 5G-MAG/Open5GS core, OCUDU gNB, AF/AS traffic source, and OAI nrUE receivers over the live radio path.*
+
 <img src="images/mbs_text_broadcast_demo.gif" alt="5G MBS text broadcast demo video" width="700">
+
+*Figure 2. Live 5G MBS text broadcast demo. The AF/AS sends timestamped `testMsg N Tx_ns=<timestamp>` payloads through the MBS tunnel, and the same MTCH transmission is received by both UEs over G-RNTI `0xfe01`.*
 
 ## Project Structure
 
