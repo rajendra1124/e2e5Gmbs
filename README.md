@@ -21,55 +21,109 @@ The full working tree is organized around the folder names used in
 ```text
 e2e5Gmbs/
 ├── 5G-MAG-Core/
-│   ├── compose-files/
-│   ├── configs/
-│   ├── express-mock-media-server/
-│   ├── images/
-│   ├── insomnia/
-│   ├── postman/
-│   ├── scripts/
-│   └── test/
 ├── OCUDU-gNB/
-│   ├── apps/
-│   ├── build/
-│   ├── cmake/
-│   ├── configs/
-│   ├── docker/
-│   ├── external/
-│   ├── include/
-│   ├── lib/
-│   ├── scripts/
-│   └── tests/
 ├── oai-ue/
-│   ├── charts/
-│   ├── ci-scripts/
-│   ├── cmake_targets/
-│   ├── common/
-│   ├── doc/
-│   ├── docker/
-│   ├── executables/
-│   ├── fronthaul/
-│   ├── nfapi/
-│   ├── openair1/
-│   ├── openair2/
-│   ├── openair3/
-│   ├── openshift/
-│   ├── radio/
-│   ├── targets/
-│   ├── tests/
-│   └── tools/
 ├── docs/
-│   ├── run-gnb.sh
-│   ├── run-gnb-text.sh
-│   ├── activate-live-mbs.sh
-│   ├── activate-text-mbs.sh
-│   ├── restart-mbs-nfs.sh
-│   ├── ue-internet-forwarding.sh
-│   ├── ocudu-host-gnb-b210.yml
-│   ├── mbs-measure.sh
-│   └── measurement/
 └── images/
 ```
+
+<details>
+<summary><strong>5G-MAG-Core/</strong> - 5G-MAG/Open5GS MBS core, AF/AS, and Docker environment</summary>
+
+```text
+5G-MAG-Core/
+├── compose-files/
+│   ├── external/
+│   └── internal/
+├── configs/
+│   ├── external/
+│   └── internal/
+├── express-mock-media-server/
+├── images/
+├── insomnia/
+├── postman/
+├── scripts/
+└── test/
+    ├── media/
+    └── tools/
+        ├── mbs_text_stream.py
+        └── mbs_video_stream.py
+```
+</details>
+
+<details>
+<summary><strong>OCUDU-gNB/</strong> - OCUDU gNB source, MBS scheduler changes, and build output</summary>
+
+```text
+OCUDU-gNB/
+├── apps/
+├── build/
+│   └── apps/
+│       └── gnb/
+├── cmake/
+├── configs/
+├── docker/
+├── external/
+├── include/
+├── lib/
+├── scripts/
+├── tests/
+└── utils/
+```
+</details>
+
+<details>
+<summary><strong>oai-ue/</strong> - OAI nrUE source and UE-side MBS receiver support</summary>
+
+```text
+oai-ue/
+├── charts/
+├── ci-scripts/
+├── cmake_targets/
+├── common/
+├── doc/
+├── docker/
+├── executables/
+├── fronthaul/
+├── nfapi/
+├── openair1/
+├── openair2/
+├── openair3/
+├── openshift/
+├── radio/
+├── targets/
+├── tests/
+└── tools/
+```
+</details>
+
+<details>
+<summary><strong>docs/</strong> - run scripts, configuration notes, measurements, and paper artifacts</summary>
+
+```text
+docs/
+├── README.md
+├── run-gnb.sh
+├── run-gnb-text.sh
+├── activate-live-mbs.sh
+├── activate-text-mbs.sh
+├── restart-mbs-nfs.sh
+├── ue-internet-forwarding.sh
+├── ocudu-host-gnb-b210.yml
+├── mbs-measure.sh
+├── measurement/
+└── *.md, *.tex, *.bib, *.html
+```
+</details>
+
+<details>
+<summary><strong>images/</strong> - figures and screenshots used by the README and paper material</summary>
+
+```text
+images/
+└── README and paper figures
+```
+</details>
 
 ## Component Roles
 
