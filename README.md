@@ -385,6 +385,184 @@ Useful gNB log check:
 rg 'Real-time failure in RF|DL task queue is full|Received late|Detected skipped slot|MTCH: rnti=0xfe01' /tmp/ocudu_gnb_sdr.log
 ```
 
+## Installation
+
+### 1. Install System Packages
+Install the common host tools first:
+```bash
+sudo apt update
+sudo apt install -y \
+  git curl ca-certificates gnupg lsb-release \
+  build-essential cmake ninja-build pkg-config \
+  python3 python3-pip python3-venv \
+  linux-tools-common linux-tools-generic \
+  uhd-host libuhd-dev
+```
+Install Docker Engine, Docker Compose, and Docker Buildx using the Docker
+instructions for the host OS. After installation, verify:
+
+```bash
+docker --version
+docker compose version
+docker buildx version
+```
+
+For SDR hosts, verify that UHD sees the USRP:
+
+```bash
+uhd_find_devices
+lsusb -t
+```
+
+The B210 should show `5000M` or faster in `lsusb -t`.
+
+### 2. Install and Build `5G-MAG-Core`
+
+`5G-MAG-Core` contains the 5G-MAG/Open5GS core, MBS core network functions,
+AF/AS test container, Docker compose files, and sender tools.
+
+```bash
+cd ~/e2e5Gmbs/5G-MAG-Core
+```
+
+Create or edit the `.env` file used by Docker Compose. At minimum, set the host
+IP address that the UPF/MB-UPF should use:
+
+```bash
+DOCKER_HOST_IP=<your-host-ip-address>
+```
+
+If the container images are already available from GHCR, building locally is not
+required. If local images are needed, build them with:
+
+```bash
+docker buildx bake
+```
+
+Start the external SDR core deployment:
+
+```bash
+docker compose -f compose-files/external/docker-compose.yaml --env-file=.env up -d
+```
+
+Check the containers:
+
+```bash
+docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
+```
+
+Stop the core with:
+
+```bash
+docker compose -f compose-files/external/docker-compose.yaml --env-file=.env down
+```
+
+Use the internal deployment only for the containerized test environment:
+
+```bash
+docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
+```
+
+### 3. Install and Build `OCUDU-gNB`
+
+`OCUDU-gNB` contains the SDR gNB used for the over-the-air MBS experiments.
+The expected runtime binary is:
+
+```text
+OCUDU-gNB/build/apps/gnb/gnb
+```
+
+Configure and build the gNB:
+
+```bash
+cd ~/e2e5Gmbs/OCUDU-gNB
+cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DENABLE_UHD=ON
+cmake --build build --target gnb -j"$(nproc)"
+```
+
+Verify the binary exists:
+
+```bash
+ls -l build/apps/gnb/gnb
+```
+
+The `docs/run-gnb.sh` script expects this binary layout and uses:
+
+```text
+../OCUDU-gNB/build/apps/gnb/gnb
+```
+
+relative to the `docs/` directory in the GitHub repository.
+
+```bash
+cd ~/e2e5Gmbs
+grep 'GNB_BIN=' docs/run-gnb.sh
+```
+
+Expected:
+
+```bash
+GNB_BIN="$(readlink -f "$SCRIPT_DIR/../OCUDU-gNB/build/apps/gnb/gnb")"
+```
+
+### 4. Install and Build `oai-ue`
+
+`oai-ue` contains the OAI nrUE used on the UE machines. Build it on each UE host
+that will run an SDR UE.
+
+Install OAI dependencies and USRP support:
+
+```bash
+cd ~/e2e5Gmbs/oai-ue/cmake_targets
+./build_oai -I --install-optional-packages -w USRP
+```
+
+Build the 5G nrUE:
+
+```bash
+./build_oai -w USRP --nrUE --ninja
+```
+
+Verify the binary exists:
+
+```bash
+ls -l ~/e2e5Gmbs/oai-ue/cmake_targets/ran_build/build/nr-uesoftmodem
+```
+
+For MBS reception, the UE runtime environment should include:
+
+```bash
+export OAI_NRUE_MBS_G_RNTI=0xfe01
+```
+
+Each UE must use a unique IMSI in its UE configuration. For the current two-UE
+testbed, use:
+
+```text
+UE1: 999700000168430
+UE2: 999700000168431
+```
+
+### 5. Install `docs` Runtime Scripts
+
+The `docs` folder contains the top-level run scripts. Make sure the scripts are
+executable:
+
+```bash
+cd ~/e2e5Gmbs/docs
+chmod +x run-gnb.sh run-gnb-text.sh activate-live-mbs.sh activate-text-mbs.sh
+chmod +x restart-mbs-nfs.sh ue-internet-forwarding.sh mbs-measure.sh
+```
+
+Before the first SDR run, confirm:
+
+```bash
+ls -l ../OCUDU-gNB/build/apps/gnb/gnb
+docker ps
+uhd_find_devices
+lsusb -t
+```
+
 ## Subscriber Setup
 
 Add or update UE subscribers in MongoDB before running the UEs. The helper file
