@@ -14,9 +14,8 @@ to that tunnel, and the gNB maps the traffic to MTCH for radio transmission.
 <img src="images/mbs-testbed-in-a-lab.png" alt="mbs-testbed-in-a-lab" width="700">
 
 <img src="images/mbs_text_broadcast_demo.mp4" alt="5G MBS video streaming demo" width="700">
-<video src="images/mbs_text_broadcast_demo.mp4" controls width="700">
-    Your browser does not support the video tag.
-  </video>
+
+<video src="images/mbs_text_broadcast_demo.mp4" controls width="700">Your browser does not support the video tag.</video>
 
 
 ## Project Structure
