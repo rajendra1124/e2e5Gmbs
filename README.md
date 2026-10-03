@@ -11,9 +11,9 @@ the gNB with G-RNTI `0xfe01`. The AF/AS creates an MBS broadcast session through
 MB-SMF, obtains the multicast tunnel assigned by the core, sends GTP-U packets
 to that tunnel, and the gNB maps the traffic to MTCH for radio transmission.
 
-<img src="images/mbs-testbed-in-a-lab.png" alt="mbs-testbed-in-a-lab" width="700">
+<img src="images/PTM-video-delivery.gif" alt="PTM video broadcast" width="700">
 
-*Figure 1. End-to-end SDR testbed used for 5G MBS broadcast experiments. The setup connects the 5G-MAG/Open5GS core, OCUDU gNB, AF/AS traffic source, and OAI nrUE receivers over the live radio path.*
+*Figure 1. End-to-end SDR testbed used for 5G MBS PTM broadcast experiments. The setup connects the 5G-MAG, OCUDU gNB, AF/AS traffic source, and srsRAN or oai nrUE receivers over the live radio path.*
 
 Here is the video recording with Sound:
 [![Watch the PTM broadcast Video Demo](./thumbnail.jpg)](https://github.com/rajendra1124/e2e5Gmbs/raw/main/images/PTM-video-delivery-comp.mp4)
