@@ -18,13 +18,14 @@ to that tunnel, and the gNB maps the traffic to MTCH for radio transmission.
 Here is the video recording with Sound:
 [![Watch the PTM broadcast Video Demo](./thumbnail.jpg)](https://github.com/rajendra1124/e2e5Gmbs/raw/main/images/PTM-video-delivery-comp.mp4)
 
-<video src="images/PTM-video-delivery.gif" alt="mbs-testbed-video-streaming" width="700"></video>
+<img src="images/PTM-video-delivery.gif" alt="mbs-testbed-video-streaming" width="700">
 
-*Figure 2. Live 5G MBS video broadcast demo with Point-to-Multipoint>
+<p><em>Figure 2. Live 5G MBS video broadcast demo with Point-to-Multipoint</em></p>
+
 
 <img src="images/mbs_text_broadcast_demo.gif" alt="5G MBS text broadcast demo video" width="700">
 
-*Figure 2. Live 5G MBS text broadcast demo. The AF/AS sends timestamped `testMsg N Tx_ns=<timestamp>` payloads through the MBS tunnel, and the same MTCH transmission is received by both UEs over G-RNTI `0xfe01`.*
+*Figure 3. Live 5G MBS text broadcast demo. The AF/AS sends timestamped `testMsg N Tx_ns=<timestamp>` payloads through the MBS tunnel, and the same MTCH transmission is received by both UEs over G-RNTI `0xfe01`.*
 
 ## Project Structure
 
