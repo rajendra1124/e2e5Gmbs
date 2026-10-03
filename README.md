@@ -20,7 +20,7 @@ Here is the video recording with Sound:
 
 <img src="images/PTM-video-delivery.gif" alt="mbs-testbed-video-streaming" width="700">
 
-<p><em>Figure 2. Live 5G MBS video broadcast demo with Point-to-Multipoint</em></p>
+*Figure 2. Live 5G MBS video broadcast demo with Point-to-Multipoint*
 
 
 <img src="images/mbs_text_broadcast_demo.gif" alt="5G MBS text broadcast demo video" width="700">
