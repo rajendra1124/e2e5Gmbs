@@ -15,8 +15,10 @@ to that tunnel, and the gNB maps the traffic to MTCH for radio transmission.
 
 *Figure 1. End-to-end SDR testbed used for 5G MBS broadcast experiments. The setup connects the 5G-MAG/Open5GS core, OCUDU gNB, AF/AS traffic source, and OAI nrUE receivers over the live radio path.*
 
-Here is the video recording:
+Here is the video recording with Sound:
 [![Watch the PTM broadcast Video Demo](./thumbnail.jpg)](https://github.com/rajendra1124/e2e5Gmbs/raw/main/images/PTM-video-delivery-comp.mp4)
+
+<video src="images/PTM-video-delivery.gif" alt="mbs-testbed-video-streaming" width="700">
 
 *Figure 2. Live 5G MBS video broadcast demo with Point-to-Multipoint>
 
