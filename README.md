@@ -29,7 +29,7 @@ Here is the video recording with Sound:
 
 ## Project Structure
 
-The full working tree is organized around the folder names used in
+The repository is organized into following main components inside the folder
 `/home/dwijesek/git/e2e5Gmbs`:
 
 ```text
