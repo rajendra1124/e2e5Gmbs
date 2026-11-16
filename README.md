@@ -837,3 +837,27 @@ AF/AS logs are inside the `test_mbs_af_as` container:
 - Repeated MBS activation can consume MB-SMF session/TMGI state because release
   cleanup is skipped by the AF/AS test path.
 - SDR stability depends strongly on USB3 operation and host real-time behavior.
+
+## Citation
+
+If you use this testbed or build upon our work in your research, please cite our paper:
+
+```bibtex
+@inproceedings{10.1145/3831662.3844176,
+  author    = {Paudyal, Rajendra and Emran, Al Nahian Bin and Upadhyay, Rajendra and Bhuyan, Arupjyoti and Wijesekera, Duminda},
+  title     = {5G Multicast-Broadcast On Air: An open SDR Testbed and Experimental Characterization of MBS},
+  year      = {2026},
+  isbn      = {9798400728792},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3831662.3844176},
+  doi       = {10.1145/3831662.3844176},
+  booktitle = {Proceedings of the 20th ACM Workshop on Wireless Network Testbeds, Experimental Evaluation \& Characterization},
+  pages     = {121--128},
+  numpages  = {8},
+  keywords  = {5G, MBS, PTM, software-defined-radio, testbed, over-the-air},
+  location  = {Austin, TX, USA},
+  series    = {WiNTECH '26}
+}
+```
+
